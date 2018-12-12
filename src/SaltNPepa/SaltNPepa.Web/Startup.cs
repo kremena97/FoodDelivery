@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SaltNPepa.Web.Areas.Identity.Data;
+using SaltNPepa.Data;
+using SaltNPepa.Data.Models;
+using SaltNPepa.Web.Areas.Identity;
 using SaltNPepa.Web.Models;
 
 namespace SaltNPepa.Web
@@ -32,7 +34,16 @@ namespace SaltNPepa.Web
             services.AddDbContext<SaltNPepaContext>(options =>
                 options.UseSqlServer(
                     this.Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<SaltNPepaUser>()
+
+            services.AddDefaultIdentity<SaltNPepaUser>(
+                options =>
+                {
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireDigit = false;
+                })
                 .AddEntityFrameworkStores<SaltNPepaContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
