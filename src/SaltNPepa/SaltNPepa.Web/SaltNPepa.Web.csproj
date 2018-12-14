@@ -16,4 +16,8 @@
     <ProjectReference Include="..\SaltNPepa.Data\SaltNPepa.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Products\" />
+  </ItemGroup>
+
 </Project>
