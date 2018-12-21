@@ -1,9 +1,9 @@
-﻿using SaltNPepa.Data.Models.Enum;
-using System.Collections.Generic;
+﻿using SaltNPepa.Data.Models.Contracts;
+using SaltNPepa.Data.Models.Enum;
 
 namespace SaltNPepa.Data.Models
 {
-    public class Product:BaseModel<string>
+    public class Product : BaseModel<string>
     {
         public string Name { get; set; }
 
@@ -15,6 +15,6 @@ namespace SaltNPepa.Data.Models
 
         public int Quantity { get; set; }
 
-        public ICollection<ProductOrder> ProductOrders { get; set; }
+        public string Picture { get; set; }
     }
 }

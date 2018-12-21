@@ -129,32 +129,52 @@ namespace SaltNPepa.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("SaltNPepa.Data.Models.Delivery", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("DeliveredTime");
+
+                    b.Property<int>("DeliveryStatus");
+
+                    b.Property<DateTime>("EstimatedDeliveryTime");
+
+                    b.Property<DateTime>("OrderTime");
+
+                    b.Property<string>("ReceiptId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReceiptId")
+                        .IsUnique()
+                        .HasFilter("[ReceiptId] IS NOT NULL");
+
+                    b.ToTable("Deliveries");
+                });
+
             modelBuilder.Entity("SaltNPepa.Data.Models.Order", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CustomerId");
+                    b.Property<string>("ProductId");
 
-                    b.Property<int>("CutomerId");
+                    b.Property<int>("Quantity");
 
-                    b.Property<DateTime>("DeliveredTime");
+                    b.Property<string>("ReceiptId");
 
-                    b.Property<TimeSpan>("EstimatedDeliveryTime");
-
-                    b.Property<string>("Note");
-
-                    b.Property<int>("OrderStatus");
-
-                    b.Property<DateTime>("OrderTime");
-
-                    b.Property<string>("ProviderName");
+                    b.Property<string>("SaltNPepaUserId");
 
                     b.Property<decimal>("TotalPrice");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("ReceiptId");
+
+                    b.HasIndex("SaltNPepaUserId");
 
                     b.ToTable("Orders");
                 });
@@ -168,6 +188,8 @@ namespace SaltNPepa.Data.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("Picture");
+
                     b.Property<decimal>("Price");
 
                     b.Property<int>("ProductType");
@@ -179,17 +201,28 @@ namespace SaltNPepa.Data.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("SaltNPepa.Data.Models.ProductOrder", b =>
+            modelBuilder.Entity("SaltNPepa.Data.Models.Receipt", b =>
                 {
-                    b.Property<string>("ProductId");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("OrderId");
+                    b.Property<string>("CustomerId");
 
-                    b.HasKey("ProductId", "OrderId");
+                    b.Property<string>("DeliveryId");
 
-                    b.HasIndex("OrderId");
+                    b.Property<string>("DeliveyId");
 
-                    b.ToTable("ProductOrder");
+                    b.Property<DateTime>("IssuedOn");
+
+                    b.Property<decimal>("Total");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("DeliveyId");
+
+                    b.ToTable("Receipts");
                 });
 
             modelBuilder.Entity("SaltNPepa.Data.Models.SaltNPepaUser", b =>
@@ -292,24 +325,37 @@ namespace SaltNPepa.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SaltNPepa.Data.Models.Order", b =>
+            modelBuilder.Entity("SaltNPepa.Data.Models.Delivery", b =>
                 {
-                    b.HasOne("SaltNPepa.Data.Models.SaltNPepaUser", "Customer")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerId");
+                    b.HasOne("SaltNPepa.Data.Models.Receipt", "Receipt")
+                        .WithOne("Delivery")
+                        .HasForeignKey("SaltNPepa.Data.Models.Delivery", "ReceiptId");
                 });
 
-            modelBuilder.Entity("SaltNPepa.Data.Models.ProductOrder", b =>
+            modelBuilder.Entity("SaltNPepa.Data.Models.Order", b =>
                 {
-                    b.HasOne("SaltNPepa.Data.Models.Order", "Order")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("SaltNPepa.Data.Models.Product", "Product")
-                        .WithMany("ProductOrders")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("SaltNPepa.Data.Models.Receipt")
+                        .WithMany("Orders")
+                        .HasForeignKey("ReceiptId");
+
+                    b.HasOne("SaltNPepa.Data.Models.SaltNPepaUser")
+                        .WithMany("Orders")
+                        .HasForeignKey("SaltNPepaUserId");
+                });
+
+            modelBuilder.Entity("SaltNPepa.Data.Models.Receipt", b =>
+                {
+                    b.HasOne("SaltNPepa.Data.Models.SaltNPepaUser", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("SaltNPepa.Data.Models.Delivery", "Delivey")
+                        .WithMany()
+                        .HasForeignKey("DeliveyId");
                 });
 #pragma warning restore 612, 618
         }

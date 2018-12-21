@@ -11,21 +11,21 @@ namespace SaltNPepa.Data
         {
         }
 
+        public DbSet<Receipt> Receipts { get; set; }
+
+        public DbSet<Delivery> Deliveries { get; set; }
+
         public DbSet<Product> Products { get; set; }
+
         public DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<ProductOrder>()
-                .HasKey(po => new { po.ProductId, po.OrderId });
-            builder.Entity<ProductOrder>()
-                .HasOne(p => p.Product)
-                .WithMany(po => po.ProductOrders)
-                .HasForeignKey(p => p.ProductId);
-            builder.Entity<ProductOrder>()
-                .HasOne(o => o.Order)
-                .WithMany(or => or.OrderProducts)
-                .HasForeignKey(o => o.OrderId);
+            builder.Entity<Receipt>()
+                .HasOne(x => x.Delivery)
+                .WithOne(x => x.Receipt)
+                .HasForeignKey<Delivery>(x => x.ReceiptId);
+
             base.OnModelCreating(builder);
         }
     }
