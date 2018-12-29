@@ -11,7 +11,7 @@ namespace SaltNPepa.Data
         {
         }
 
-        public DbSet<Receipt> Receipts { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
         public DbSet<Delivery> Deliveries { get; set; }
 
@@ -21,7 +21,7 @@ namespace SaltNPepa.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Receipt>()
+            builder.Entity<Cart>()
                 .HasOne(x => x.Delivery)
                 .WithOne(x => x.Receipt)
                 .HasForeignKey<Delivery>(x => x.ReceiptId);
