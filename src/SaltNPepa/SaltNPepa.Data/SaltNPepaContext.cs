@@ -19,6 +19,8 @@ namespace SaltNPepa.Data
 
         public DbSet<Order> Orders { get; set; }
 
+        public DbSet<City> Cities { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Cart>()

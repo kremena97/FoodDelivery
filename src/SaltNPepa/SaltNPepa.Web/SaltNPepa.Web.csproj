@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Products\" />
+    <Folder Include="Areas\Menu\Models\" />
   </ItemGroup>
 
 </Project>

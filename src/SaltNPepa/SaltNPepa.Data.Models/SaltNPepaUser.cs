@@ -10,7 +10,7 @@ namespace SaltNPepa.Data.Models
 
         public string LastName { get; set; }
 
-        public string City { get; set; }
+        public City City { get; set; }
         
         public string Address { get; set; }
 

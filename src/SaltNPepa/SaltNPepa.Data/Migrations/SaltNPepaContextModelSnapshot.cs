@@ -153,6 +153,18 @@ namespace SaltNPepa.Data.Migrations
                     b.ToTable("Carts");
                 });
 
+            modelBuilder.Entity("SaltNPepa.Data.Models.City", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
+
             modelBuilder.Entity("SaltNPepa.Data.Models.Delivery", b =>
                 {
                     b.Property<string>("Id")
@@ -232,17 +244,21 @@ namespace SaltNPepa.Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<string>("Addresses");
+                    b.Property<string>("Address");
+
+                    b.Property<string>("CityId");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
-
-                    b.Property<string>("DefaultAddress");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -268,6 +284,8 @@ namespace SaltNPepa.Data.Migrations
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CityId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -356,6 +374,13 @@ namespace SaltNPepa.Data.Migrations
                     b.HasOne("SaltNPepa.Data.Models.SaltNPepaUser")
                         .WithMany("Orders")
                         .HasForeignKey("SaltNPepaUserId");
+                });
+
+            modelBuilder.Entity("SaltNPepa.Data.Models.SaltNPepaUser", b =>
+                {
+                    b.HasOne("SaltNPepa.Data.Models.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId");
                 });
 #pragma warning restore 612, 618
         }

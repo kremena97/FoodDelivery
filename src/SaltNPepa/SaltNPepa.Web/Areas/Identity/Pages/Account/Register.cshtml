@@ -97,7 +97,7 @@
                                 <option value="3">Plovdiv</option>
                                 <option value="4">Stara Zagora</option>
                             </select>
-                            <span asp-validation-for="Input.City" class="text-danger"></span>
+                            <span asp-validation-for="Input.SelectedCity" class="text-danger"></span>
                         </div>
                     </div>
                     <div clas="form-row">
@@ -113,14 +113,17 @@
                     <div class="form-group">
                         <input type="submit" value="Login" class="btn float-right login_btn ">
                     </div>
-                    <br/>
+                    <br />
                     <h5 class="text-center text-white">OR LOGIN WITH</h5>
 
-                    <div class="d-flex social_icon_reg ml-12">
-                        <span><i class="fab fa-facebook-square"></i></span>
-                        <span><i class="fab fa-google-plus-square"></i></span>
-                        <span><i class="fab fa-twitter-square"></i></span>
+                    <div class="row ">
+                        <div class="col-1 d-flex social_icon_reg ml-12">
+                            <span><i class="fab fa-facebook-square"></i></span>
+                            <span><i class="fab fa-google-plus-square"></i></span>
+                            <span><i class="fab fa-twitter-square"></i></span>
+                        </div>
                     </div>
+
 
                 </form>
             </div>

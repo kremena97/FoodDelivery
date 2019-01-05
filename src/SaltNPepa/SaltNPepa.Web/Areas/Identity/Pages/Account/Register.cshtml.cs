@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using SaltNPepa.Data.Models;
+using SaltNPepa.Web.Models;
 
 namespace SaltNPepa.Web.Areas.Identity.Pages.Account
 {
@@ -57,15 +59,16 @@ namespace SaltNPepa.Web.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Required]
+            [StringLength(13, ErrorMessage = "Invalid phone number.",MinimumLength = 10)]
             [DataType(DataType.PhoneNumber)]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Please select a city to deliver your order.")]
             [Display(Name = "City")]
-            public string City { get; set; }
+            public string SelectedCity { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "We do miracles, but delivery without address is impossible.")]
             [Display(Name = "Address")]
             public string Address { get; set; }
 
