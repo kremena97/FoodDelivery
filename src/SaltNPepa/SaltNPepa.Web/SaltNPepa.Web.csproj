@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SaltNPepa.Data.Models\SaltNPepa.Data.Models.csproj" />
     <ProjectReference Include="..\SaltNPepa.Data\SaltNPepa.Data.csproj" />
+    <ProjectReference Include="..\SaltNPepa.Services\SaltNPepa.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -9,7 +9,7 @@ namespace SaltNPepa.Data.Models
 
         public decimal Price { get; set; }
 
-        public ProductType ProductType { get; set; }
+        public Category Category { get; set; }
 
         public string Details { get; set; }
 
