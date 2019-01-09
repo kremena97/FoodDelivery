@@ -59,8 +59,7 @@ namespace Sandbox
                     Product salad = new Product()
                     {
                         Picture = $"https://res.cloudinary.com/dbnssecqq/image/upload/v1546998771/Menu/Salads/{i}.png",
-                        Category = saladsCategory,
-                        Quantity = 380
+                        Category = saladsCategory
                     };
                     if (i==1)
                     {

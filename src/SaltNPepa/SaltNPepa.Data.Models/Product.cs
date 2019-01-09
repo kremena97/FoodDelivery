@@ -1,9 +1,15 @@
-﻿using SaltNPepa.Data.Models.Contracts;
+﻿using System.Collections.Generic;
+using SaltNPepa.Data.Models.Contracts;
 
 namespace SaltNPepa.Data.Models
 {
     public class Product : BaseModel<string>
     {
+        public Product()
+        {
+            this.CartProducts = new HashSet<CartProduct>();
+        }
+
         public string Name { get; set; }
 
         public decimal Price { get; set; }
@@ -12,8 +18,8 @@ namespace SaltNPepa.Data.Models
 
         public string Details { get; set; }
 
-        public int Quantity { get; set; }
-
         public string Picture { get; set; }
+
+        public ICollection<CartProduct> CartProducts { get; set; }
     }
 }

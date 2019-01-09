@@ -7,10 +7,16 @@ namespace SaltNPepa.Data.Models
 {
     public class Order : BaseModel<string>
     {
-        public Product Product { get; set; }
-
-        public int Quantity { get; set; }
-
         public decimal TotalPrice { get; set; }
+
+        public Delivery Delivery { get; set; }
+
+        public int? DeliveryAddressId { get; set; }
+        public virtual Address DeliveryAddress { get; set; }
+
+        public string SaltNPepaUserId { get; set; }
+        public SaltNPepaUser SaltNPepaUser { get; set; }
+
+        public virtual ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }

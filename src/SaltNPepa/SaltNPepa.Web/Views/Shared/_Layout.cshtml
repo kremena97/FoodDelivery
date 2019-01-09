@@ -79,10 +79,6 @@
                         </ul>
                     </li>
 
-                    <li class="sale-noti">
-                        <a asp-controller="Home" asp-action="BookTable">BOOK TABLE</a>
-                    </li>
-
                     <li>
                         <a asp-controller="Home" asp-action="BookTable">FOOD TRACKER</a>
                     </li>
@@ -96,10 +92,6 @@
                     </li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>
-                            <a asp-area="Identity" asp-page="/Account/Login">PROFILE</a>
-                        </li>
-
                         <li>
                             <a asp-area="Identity" asp-page="/Account/Logout">LOGOUT</a>
                         </li>
@@ -228,9 +220,11 @@
                 </span>
 
                 <!--  -->
+                
                 <a href="/Users/Profile" class="header-wrapicon1 dis-block m-l-30">
                     <img src="/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
                 </a>
+
 
                 <span class="linedivide1"></span>
 
@@ -345,10 +339,6 @@
                             </ul>
                         </li>
 
-                        <li class="sale-noti">
-                            <a asp-controller="Home" asp-action="BookTable">BOOK TABLE</a>
-                        </li>
-
                         <li>
                             <a asp-controller="Home" asp-action="BookTable">FOOD TRACKER</a>
                         </li>
@@ -371,10 +361,6 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li>
-                                <a asp-area="Identity" asp-page="/Account/Login">PROFILE</a>
-                            </li>
-
-                            <li>
                                 <a asp-area="Identity" asp-page="/Account/Logout">LOGOUT</a>
                             </li>
                         }
@@ -384,9 +370,6 @@
                                 <a asp-area="Identity" asp-page="/Account/Login">LOGIN</a>
                             </li>
 
-                            <li>
-                                <a asp-area="Identity" asp-page="/Account/Register">REGISTER</a>
-                            </li>
                         }
                     </ul>
                 </nav>
@@ -564,7 +547,7 @@
                     <a asp-controller="Home" asp-action="BookTable">BOOK TABLE</a>
                 </li>
 
-                <li>
+                <li class="item-menu-mobile">
                     <a asp-controller="Home" asp-action="BookTable">FOOD TRACKER</a>
                 </li>
 
@@ -578,21 +561,21 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li>
+                    <li class="item-menu-mobile">
                         <a asp-area="Identity" asp-page="/Account/Login">PROFILE</a>
                     </li>
 
-                    <li>
+                    <li class="item-menu-mobile">
                         <a asp-area="Identity" asp-page="/Account/Logout">LOGOUT</a>
                     </li>
                 }
                 else
                 {
-                    <li>
+                    <li class="item-menu-mobile">
                         <a asp-area="Identity" asp-page="/Account/Login">LOGIN</a>
                     </li>
 
-                    <li>
+                    <li class="item-menu-mobile">
                         <a asp-area="Identity" asp-page="/Account/Register">REGISTER</a>
                     </li>
                 }
