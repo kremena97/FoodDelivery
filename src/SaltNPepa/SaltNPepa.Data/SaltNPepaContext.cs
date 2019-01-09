@@ -21,6 +21,10 @@ namespace SaltNPepa.Data
 
         public DbSet<City> Cities { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Status> Statuses { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Cart>()

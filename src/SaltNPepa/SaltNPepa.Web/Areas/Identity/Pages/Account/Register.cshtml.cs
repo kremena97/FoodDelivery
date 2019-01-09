@@ -57,28 +57,7 @@ namespace SaltNPepa.Web.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
-
-            [Required]
-            [StringLength(13, ErrorMessage = "Invalid phone number.",MinimumLength = 10)]
-            [DataType(DataType.PhoneNumber)]
-            [Display(Name = "Phone number")]
-            public string PhoneNumber { get; set; }
-
-            [Required(ErrorMessage = "Please select a city to deliver your order.")]
-            [Display(Name = "City")]
-            public string SelectedCity { get; set; }
-
-            [Required(ErrorMessage = "We do miracles, but delivery without address is impossible.")]
-            [Display(Name = "Address")]
-            public string Address { get; set; }
-
-            [Required]
-            [Display(Name = "First name")]
-            public string FirstName { get; set; }
-
-            [Required]
-            [Display(Name = "Last name")]
-            public string LastName { get; set; }
+            
         }
 
         public void OnGet(string returnUrl = null)

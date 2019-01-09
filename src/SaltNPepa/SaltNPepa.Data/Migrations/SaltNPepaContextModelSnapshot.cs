@@ -153,6 +153,18 @@ namespace SaltNPepa.Data.Migrations
                     b.ToTable("Carts");
                 });
 
+            modelBuilder.Entity("SaltNPepa.Data.Models.Category", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("SaltNPepa.Data.Models.City", b =>
                 {
                     b.Property<string>("Id")
@@ -220,6 +232,8 @@ namespace SaltNPepa.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("CategoryId");
+
                     b.Property<string>("Details");
 
                     b.Property<string>("Name");
@@ -228,11 +242,11 @@ namespace SaltNPepa.Data.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<int>("ProductType");
-
                     b.Property<int>("Quantity");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -296,6 +310,18 @@ namespace SaltNPepa.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("SaltNPepa.Data.Models.Status", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("StatusName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -374,6 +400,13 @@ namespace SaltNPepa.Data.Migrations
                     b.HasOne("SaltNPepa.Data.Models.SaltNPepaUser")
                         .WithMany("Orders")
                         .HasForeignKey("SaltNPepaUserId");
+                });
+
+            modelBuilder.Entity("SaltNPepa.Data.Models.Product", b =>
+                {
+                    b.HasOne("SaltNPepa.Data.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("SaltNPepa.Data.Models.SaltNPepaUser", b =>

@@ -1,5 +1,4 @@
 ﻿using SaltNPepa.Data.Models.Contracts;
-using SaltNPepa.Data.Models.Enum;
 
 namespace SaltNPepa.Data.Models
 {

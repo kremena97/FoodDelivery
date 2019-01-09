@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7D25CFC3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox", "Sandbox\Sandbox.csproj", "{21CC0DF1-A28F-4879-823B-59E2ECB2A9E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaltNPepa.Services", "SaltNPepa.Services\SaltNPepa.Services.csproj", "{E7B6A4DE-4780-4A60-8357-E7782FE8D895}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaltNPepa.Services", "SaltNPepa.Services\SaltNPepa.Services.csproj", "{E7B6A4DE-4780-4A60-8357-E7782FE8D895}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
