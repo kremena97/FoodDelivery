@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FoodDelivery.Data.Models\FoodDelivery.Data.Models.csproj" />
+    <ProjectReference Include="..\FoodDelivery.Data\FoodDelivery.Data.csproj" />
+  </ItemGroup>
+
+</Project>
